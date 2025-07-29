@@ -2,7 +2,6 @@
 
 import React, { createContext, useContext, useState } from 'react';
 import { Note } from '@/types';
-import { v4 as uuidv4 } from 'uuid';
 
 interface NotesContextType {
   notes: Note[];
@@ -15,7 +14,7 @@ export const NotesProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [notes, setNotes] = useState<Note[]>([]);
 
   const addNote = (content: string) => {
-    const newNote: Note = { id: uuidv4(), content };
+    const newNote: Note = { id: Date.now().toString(), content };
     setNotes((prevNotes) => [...prevNotes, newNote]);
   };
 
